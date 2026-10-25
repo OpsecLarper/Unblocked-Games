@@ -1,0 +1,6 @@
+{
+  "name": "Apex Unblocked Games",
+  "description": "Fast, ad-free unblocked games catalog with embedded iframes, panic button cloaking, custom game importing, and responsive fullscreen play.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
