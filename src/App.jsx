@@ -8,7 +8,7 @@ import {
   Flame,
   ArrowRight
 } from 'lucide-react';
-import { INITIAL_GAMES } from './data/defaultGames.js';
+import { INITIAL_GAMES, resolveAssetUrl } from './data/defaultGames.js';
 import { Navbar } from './components/Navbar.jsx';
 import { GameCard } from './components/GameCard.jsx';
 import { GamePlayerView } from './components/GamePlayerView.jsx';
@@ -43,9 +43,10 @@ export default function App() {
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isJsonOpen, setIsJsonOpen] = useState(false);
 
-  // Load games from /games.json and merge custom games
+  // Load games from games.json and merge custom games
   useEffect(() => {
-    fetch('/games.json')
+    const targetUrl = resolveAssetUrl('./games.json');
+    fetch(targetUrl)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch games.json');
         return res.json();

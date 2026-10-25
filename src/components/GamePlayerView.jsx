@@ -12,6 +12,7 @@ import {
   Tv,
   Gamepad2
 } from 'lucide-react';
+import { resolveAssetUrl } from '../data/defaultGames.js';
 
 export const GamePlayerView = ({
   game,
@@ -69,7 +70,7 @@ export const GamePlayerView = ({
       if (newWin) {
         newWin.document.title = 'Classes'; // Cloaked default
         const iframe = newWin.document.createElement('iframe');
-        iframe.src = window.location.origin + game.iframeSrc;
+        iframe.src = resolveAssetUrl(game.iframeSrc);
         iframe.style.position = 'fixed';
         iframe.style.top = '0';
         iframe.style.left = '0';
@@ -180,7 +181,7 @@ export const GamePlayerView = ({
           {/* Active Iframe container */}
           <iframe
             key={iframeKey}
-            src={game.iframeSrc}
+            src={resolveAssetUrl(game.iframeSrc)}
             title={game.title}
             className="w-full h-full border-0 block bg-black"
             allow="autoplay; fullscreen; keyboard; gamepad"

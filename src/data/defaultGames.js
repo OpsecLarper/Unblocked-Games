@@ -1,3 +1,17 @@
+// Helper function to resolve relative paths on GitHub Pages, custom subpaths, or root domains
+export function resolveAssetUrl(path) {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+    return path;
+  }
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  try {
+    return new URL(cleanPath, window.location.href).href;
+  } catch {
+    return path;
+  }
+}
+
 export const INITIAL_GAMES = [
   {
     id: "galaxy-invaders",
@@ -9,9 +23,9 @@ export const INITIAL_GAMES = [
     author: "Apex Studio",
     description: "Defend the solar system against descending armada fleets of alien invaders with your laser cannons and tactical barricades.",
     controls: "[A] / [D] or [←] / [→] to Move · [Space] to Fire Lasers",
-    iframeSrc: "/games/invaders/index.html",
-    iframeCode: "<iframe src=\"/games/invaders/index.html\" title=\"Galaxy Invaders\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/space_invaders_banner_1792946468108.jpg",
+    iframeSrc: "./games/invaders/index.html",
+    iframeCode: "<iframe src=\"./games/invaders/index.html\" title=\"Galaxy Invaders\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/space_invaders_banner_1792946468108.jpg",
     featured: true,
     addedAt: "2026-10-25"
   },
@@ -25,9 +39,9 @@ export const INITIAL_GAMES = [
     author: "Gabriele Cirulli",
     description: "Combine identical numbers by sliding the tiles across the 4x4 grid until you construct the legendary 2048 tile.",
     controls: "Arrow keys or Swipe on touch screen to slide tiles",
-    iframeSrc: "/games/2048/index.html",
-    iframeCode: "<iframe src=\"/games/2048/index.html\" title=\"2048 Classic\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/puzzle_tiles_banner_1792946468525.jpg",
+    iframeSrc: "./games/2048/index.html",
+    iframeCode: "<iframe src=\"./games/2048/index.html\" title=\"2048 Classic\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/puzzle_tiles_banner_1792946468525.jpg",
     featured: true,
     addedAt: "2026-10-25"
   },
@@ -41,9 +55,9 @@ export const INITIAL_GAMES = [
     author: "Apex Studio",
     description: "Pilot a glowing synthwave cyber serpent through an energetic grid, devouring quantum energy orbs and avoiding deadly tail collisions.",
     controls: "Arrow Keys or [W] [A] [S] [D] to steer the serpent",
-    iframeSrc: "/games/snake/index.html",
-    iframeCode: "<iframe src=\"/games/snake/index.html\" title=\"Cyber Snake\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/retro_snake_banner_1792946468765.jpg",
+    iframeSrc: "./games/snake/index.html",
+    iframeCode: "<iframe src=\"./games/snake/index.html\" title=\"Cyber Snake\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/retro_snake_banner_1792946468765.jpg",
     featured: true,
     addedAt: "2026-10-25"
   },
@@ -57,9 +71,9 @@ export const INITIAL_GAMES = [
     author: "Apex Studio",
     description: "Demolish vibrant multi-layered neon crystalline barriers with a high-velocity particle orb and precision responsive paddle.",
     controls: "Mouse drag or [←] [→] / [A] [D] to slide paddle",
-    iframeSrc: "/games/breakout/index.html",
-    iframeCode: "<iframe src=\"/games/breakout/index.html\" title=\"Brick Breaker Arcade\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/brick_breaker_banner_1792946469393.jpg",
+    iframeSrc: "./games/breakout/index.html",
+    iframeCode: "<iframe src=\"./games/breakout/index.html\" title=\"Brick Breaker Arcade\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/brick_breaker_banner_1792946469393.jpg",
     featured: true,
     addedAt: "2026-10-25"
   },
@@ -73,9 +87,9 @@ export const INITIAL_GAMES = [
     author: "Apex Studio",
     description: "Navigate tight perilous gaps between green conduit pipelines with precise aerodynamic flapping and timing.",
     controls: "[Space] or Click / Tap screen to flap wings",
-    iframeSrc: "/games/flappy/index.html",
-    iframeCode: "<iframe src=\"/games/flappy/index.html\" title=\"Flappy Dash\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/space_invaders_banner_1792946468108.jpg",
+    iframeSrc: "./games/flappy/index.html",
+    iframeCode: "<iframe src=\"./games/flappy/index.html\" title=\"Flappy Dash\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/space_invaders_banner_1792946468108.jpg",
     featured: false,
     addedAt: "2026-10-25"
   },
@@ -89,9 +103,9 @@ export const INITIAL_GAMES = [
     author: "Al Alcorn Tribute",
     description: "The immortal table tennis battle. Challenge the adaptive AI or grab a keyboard mate for intense side-by-side rally showdowns.",
     controls: "1P: [W] [S] or Mouse · 2P: P1 [W][S] / P2 [↑][↓]",
-    iframeSrc: "/games/pong/index.html",
-    iframeCode: "<iframe src=\"/games/pong/index.html\" title=\"Retro Pong Duel\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/brick_breaker_banner_1792946469393.jpg",
+    iframeSrc: "./games/pong/index.html",
+    iframeCode: "<iframe src=\"./games/pong/index.html\" title=\"Retro Pong Duel\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/brick_breaker_banner_1792946469393.jpg",
     featured: false,
     addedAt: "2026-10-25"
   },
@@ -105,9 +119,9 @@ export const INITIAL_GAMES = [
     author: "Atari Tribute",
     description: "Experience true zero-gravity inertial space physics. Rotate, burn thrusters, and vaporize drifting space boulders before they crush your hull.",
     controls: "[↑] Thrust · [←] [→] Rotate · [Space] Fire Lasers",
-    iframeSrc: "/games/asteroids/index.html",
-    iframeCode: "<iframe src=\"/games/asteroids/index.html\" title=\"Vector Asteroids\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/space_invaders_banner_1792946468108.jpg",
+    iframeSrc: "./games/asteroids/index.html",
+    iframeCode: "<iframe src=\"./games/asteroids/index.html\" title=\"Vector Asteroids\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/space_invaders_banner_1792946468108.jpg",
     featured: false,
     addedAt: "2026-10-25"
   },
@@ -121,9 +135,9 @@ export const INITIAL_GAMES = [
     author: "Curt Johnson Tribute",
     description: "Uncover numbers, deduce danger zones, and flag all hidden subterranean explosive mines without detonating the grid.",
     controls: "Left-Click to clear tile · Right-Click to toggle Flag",
-    iframeSrc: "/games/minesweeper/index.html",
-    iframeCode: "<iframe src=\"/games/minesweeper/index.html\" title=\"Minesweeper\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
-    bannerImage: "/src/assets/images/puzzle_tiles_banner_1792946468525.jpg",
+    iframeSrc: "./games/minesweeper/index.html",
+    iframeCode: "<iframe src=\"./games/minesweeper/index.html\" title=\"Minesweeper\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen allow=\"autoplay; fullscreen; keyboard\"></iframe>",
+    bannerImage: "./src/assets/images/puzzle_tiles_banner_1792946468525.jpg",
     featured: false,
     addedAt: "2026-10-25"
   }
